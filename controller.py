@@ -59,17 +59,11 @@ class Controller:
         )
 
         self.approach_distance = 0.1
-        # Use the gripper_link origin as the centred grasp reference. The old
-        # +Y offset shifted this reference sideways along the closing axis.
-        # If the model's contact-pad centre differs, calibrate this local offset
-        # from its URDF/geometry; do not reuse a single finger's lateral offset.
         self.grasp_center_offset = np.zeros(3, dtype=float)
         self.pregrasp_position_tolerance = 0.005  # metres
         self.pregrasp_orientation_tolerance = np.deg2rad(5.0)
         self.pregrasp_debug_ids = []
-        # Joint velocities use rad/s for revolute joints and m/s for prismatic joints.
         self.movement_speed_threshold = 0.02
-        # Joint position errors use radians or meters, respectively.
         self.target_position_tolerance = 0.02
         self.still_steps = 0
         self.still_steps_required = 5
